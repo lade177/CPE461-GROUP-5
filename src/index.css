@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-nodejs-green: #339933;
+  --color-nodejs-dark: #121212;
+  --color-nodejs-gray: #212121;
+  --color-nodejs-light-gray: #333333;
+  --color-nodejs-text: #f0f0f0;
+  --color-nodejs-muted: #888888;
+}
+
+@layer base {
+  body {
+    @apply bg-nodejs-dark text-nodejs-text font-sans relative min-h-screen overflow-x-hidden;
+  }
+
+  body::before {
+    content: "";
+    @apply fixed inset-0 pointer-events-none -z-10;
+    background: 
+      /* Central Glow */
+      radial-gradient(circle at 50% 50%, rgba(51, 153, 51, 0.35) 0%, transparent 55%),
+      /* Top Darkening */
+      linear-gradient(to bottom, rgba(18, 18, 18, 1) 0%, rgba(18, 18, 18, 0.8) 10%, transparent 40%),
+      /* Outer Vignette */
+      radial-gradient(circle at 50% 50%, transparent 10%, rgba(10, 10, 10, 0.95) 100%);
+    filter: blur(30px);
+  }
+}
